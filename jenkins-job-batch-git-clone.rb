@@ -12,6 +12,8 @@ require 'pp'
 @jenkins_host  = ENV['JENKINS_HOST'] || 'jenkins'
 @jenkins_port = ENV['JENKINS_PORT'] || '80'
 @jenkins_job_filter = ENV['JENKINS_JOB_FILTER'] || ''
+@git_clone_user = ENV['GIT_CLONE_USER'] || nil
+@git_clone_dir = ENV['GIT_CLONE_DIR'] || '/tmp/src'
 
 @jenkins_job_git_url_list = []
 
@@ -48,10 +50,22 @@ end
       ## If repoTag contains a literal '$', we want to know where this variable comes from
       puts "Git URL:"
       puts jenkins_job_git_url
+      puts "Clone URL Construction:"
+      my_uri = @jenkins_job_git_url_list.last
+
+      puts "git clone ssh://#{ENV['GIT_CLONE_USER'] + '@' if ENV['GIT_CLONE_USER']}#{my_uri.host}:#{my_uri.port}#{my_uri.path}"
       puts "Current Build Number:"
       puts @client.job.get_current_build_number( jenkins_job )
     end
-
   end
 end
 
+
+puts "Checking out git repos..."
+@jenkins_job_git_url_list.each do |my_uri|
+
+  FileUtils.mkdir_p @git_clone_dir
+  Dir.chdir(@git_clone_dir){
+    system( "git clone ssh://#{ENV['GIT_CLONE_USER'] + '@' if ENV['GIT_CLONE_USER']}#{my_uri.host}:#{my_uri.port}#{my_uri.path}" )
+  }
+end
