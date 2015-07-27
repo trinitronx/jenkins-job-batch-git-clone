@@ -1,6 +1,8 @@
 FROM ruby:2.2.2
 MAINTAINER James Cuzella (@trinitronx)
 
+RUN apt-get install -y git
+
 # Copy the Gemfile and Gemfile.lock into the image.
 # Temporarily set the working directory to where they are.
 WORKDIR /tmp
