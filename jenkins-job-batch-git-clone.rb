@@ -65,7 +65,7 @@ puts "Checking out git repos..."
 @jenkins_job_git_url_list.each do |my_uri|
 
   FileUtils.mkdir_p @git_clone_dir
-  Dir.chdir(@git_clone_dir){
+  FileUtils.cd(@git_clone_dir) do
     system( "git clone ssh://#{ENV['GIT_CLONE_USER'] + '@' if ENV['GIT_CLONE_USER']}#{my_uri.host}:#{my_uri.port}#{my_uri.path}" )
-  }
+  end
 end
