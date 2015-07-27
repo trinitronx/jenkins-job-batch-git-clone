@@ -10,4 +10,4 @@ Example Usage
 
 To run:
 
-    sudo docker run -ti -e JENKINS_DEBUG=1 -e JENKINS_USER=myjenkinsuser -e JENKINS_PASSWORD=1deadbeefbadc0de123456789abcd   trinitronx/jenkins-job-batch-git-clone
+    docker run -ti -e JENKINS_DEBUG=1 -e JENKINS_HOST=jenkins.example.net -e JENKINS_USER=myjenkinsuser -e JENKINS_PASSWORD=1deadbeefbadc0de123456789abcd -e JENKINS_JOB_FILTER=''  trinitronx/jenkins-job-batch-git-clone
