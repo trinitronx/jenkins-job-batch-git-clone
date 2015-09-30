@@ -9,6 +9,7 @@ Available Environment Variables
 
  - `GIT_CLONE_DIR`: Checkout repo to this directory **inside** the Docker Container.<br/> (Useful for [boot2docker][b2docker] / [docker-machine][docker-machine] running on a Mac with an automatic `/Users` shared directory from Host Mac -> Docker Host VM)
  - `GIT_CLONE_USER`: Checkout repo using this SSH username.<br/> (Translates to: `git clone ssh://${GIT_CLONE_USER}@host:port/path`)
+ - `GIT_CLONE_FQDN`: Default FQDN to use for short hostnames found for git repo URIs.<br/> (Useful when short hostnames are found in Jenkins Job git URIs which are not resolvable from the Docker Container)
  - `JENKINS_DEBUG`: Turns on extra info debug logging.
  - `JENKINS_HOST`: Jenkins Host to query for job list.
  - `JENKINS_JOB_FILTER`: A regex to filter what jobs to search for Git URIs.<br/> (Uses: `@client.job.list(jobs_to_filter)` from [jenkins_api_client][jenkins-api])
