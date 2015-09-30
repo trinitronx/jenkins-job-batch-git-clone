@@ -59,9 +59,8 @@ end
       puts jenkins_job_git_url
       puts "Clone URL Construction:"
       my_uri = @jenkins_job_git_url_list.last
-      unless my_uri.host.include? '.'
-        my_uri.host << @git_clone_fqdn
-      end
+      my_uri.host << @git_clone_fqdn unless my_uri.host.nil? || my_uri.host.include?('.')
+
       puts "git clone ssh://#{ENV['GIT_CLONE_USER'] + '@' if ENV['GIT_CLONE_USER']}#{my_uri.host}:#{my_uri.port}#{my_uri.path}"
       puts "Current Build Number:"
       puts @client.job.get_current_build_number( jenkins_job )
@@ -72,9 +71,8 @@ end
 
 puts "Checking out git repos..."
 @jenkins_job_git_url_list.each do |my_uri|
-  unless my_uri.host.include? '.'
-    my_uri.host << @git_clone_fqdn
-  end
+  my_uri.host << @git_clone_fqdn unless my_uri.host.nil? || my_uri.host.include?('.')
+
   FileUtils.mkdir_p @git_clone_dir
   FileUtils.cd(@git_clone_dir) do
     system( "git clone ssh://#{ENV['GIT_CLONE_USER'] + '@' if ENV['GIT_CLONE_USER']}#{my_uri.host}:#{my_uri.port}#{my_uri.path}" )
