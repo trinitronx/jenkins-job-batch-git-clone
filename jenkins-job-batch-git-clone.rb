@@ -21,6 +21,12 @@ require 'pp'
 if ENV['JENKINS_DEBUG']
   printf "%42s = %s\n", "\033[1;32mJENKINS_HOST\033[0m", @jenkins_host
   printf "%42s = %s\n", "\033[1;32mJENKINS_PORT\033[0m", @jenkins_port
+  printf "%42s = %s\n", "\033[1;32mJENKINS_USER\033[0m", @jenkins_user
+  printf "%42s = %s\n", "\033[1;32mJENKINS_PASSWORD\033[0m", @jenkins_password
+  printf "%42s = %s\n", "\033[1;32mJENKINS_JOB_FILTER\033[0m", @jenkins_job_filter
+  printf "%42s = %s\n", "\033[1;32mGIT_CLONE_FQDN\033[0m", @git_clone_fqdn
+  printf "%42s = %s\n", "\033[1;32mGIT_CLONE_USER\033[0m", @git_clone_user
+  printf "%42s = %s\n", "\033[1;32mGIT_CLONE_DIR\033[0m", @git_clone_dir
 end
 
 class UnspecifiedParameters < RuntimeError
