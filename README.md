@@ -7,12 +7,12 @@ Get the Git clone URL of each job and check them out to `/tmp/src`.
 Available Environment Variables
 -------------------------------
 
- - `GIT_CLONE_DIR`: Checkout repo to this directory **inside** the Docker Container. (Useful for [boot2docker][b2docker] / [docker-machine][docker-machine] running on a Mac with an automatic `/Users` shared directory from Host Mac -> Docker Host VM)
- - `GIT_CLONE_USER`: Checkout repo using this SSH username. (Translates to: `git clone ssh://${GIT_CLONE_USER}@host:port/path`)
+ - `GIT_CLONE_DIR`: Checkout repo to this directory **inside** the Docker Container.<br/> (Useful for [boot2docker][b2docker] / [docker-machine][docker-machine] running on a Mac with an automatic `/Users` shared directory from Host Mac -> Docker Host VM)
+ - `GIT_CLONE_USER`: Checkout repo using this SSH username.<br/> (Translates to: `git clone ssh://${GIT_CLONE_USER}@host:port/path`)
  - `JENKINS_DEBUG`: Turns on extra info debug logging.
  - `JENKINS_HOST`: Jenkins Host to query for job list.
- - `JENKINS_JOB_FILTER`: A regex to filter what jobs to search for Git URIs. (Uses: `@client.job.list(jobs_to_filter)` from [jenkins_api_client][jenkins-api])
- - `JENKINS_PASSWORD`: Jenkins [API Access Token][jenkins-api-token]. Get one via: `http://jenkins.yourdomain.example.net/me/configure`
+ - `JENKINS_JOB_FILTER`: A regex to filter what jobs to search for Git URIs.<br/> (Uses: `@client.job.list(jobs_to_filter)` from [jenkins_api_client][jenkins-api])
+ - `JENKINS_PASSWORD`: Jenkins [API Access Token][jenkins-api-token].<br/> Get one via: `http://jenkins.yourdomain.example.net/me/configure`
  - `JENKINS_PORT`: Port to access Jenkins API on.
  - `JENKINS_USER`: User to access Jenkins API with.
 
