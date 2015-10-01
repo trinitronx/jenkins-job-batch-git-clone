@@ -53,7 +53,7 @@ Known Issues / TODO
 
 If cloning via SSH URI, or private repos git credentials can prevent an easy batch clone.  You will need to pass through your git SSH keys, or use `ssh-agent`.  In the case of GitHub, you may choose to use a [GitHub API Token][github-api-token].
 
-A good place to start is to run `ssh-agent` on either the Docker Host machine, or on the Hosting physical machine that is running [`boot2docker`][b2docker] or [`docker-machine`][docker-machine].  You will then need to pass through the `$SSH_AUTH_SOCK` environment variable, and mount the actual socket file as a [docker volume][docker-volumes] into the Docker Container.  The [method for doing this depends][docker-ssh-agent-so-answer] on where you are running the `docker` daemon (e.g.: [`boot2docker`][b2docker] on a Mac / physical machine, [`docker-machine`][docker-machine] on a Mac / physical machine, inside another Linux VM, on a physical machine, etc...)
+A good place to start is to run `ssh-agent` on either the Docker Host machine, or on the Hosting physical machine that is running [`boot2docker`][b2docker] or [`docker-machine`][docker-machine].  You will then need to pass through the `$SSH_AUTH_SOCK` environment variable, and mount the actual socket file as a [docker volume][docker-volumes] into the Docker Container.  The [method][docker-ssh-agent] for doing this depends on where you are running the `docker` daemon (e.g.: [`boot2docker`][b2docker] on a Mac / physical machine, [`docker-machine`][docker-machine] on a Mac / physical machine, inside another Linux VM, on a physical machine, etc...)
 
 Here are some helpful methods:
 
@@ -66,7 +66,7 @@ Here are some helpful methods:
 [jenkins-api]: https://github.com/arangamani/jenkins_api_client
 [jenkins-api-token]: https://wiki.jenkins-ci.org/display/JENKINS/Authenticating+scripted+clients
 [docker-volumes]: http://container-solutions.com/understanding-volumes-docker/
-[docker-ssh-agent-so-answer]: http://stackoverflow.com/q/27036936/645491
+[docker-ssh-agent]: http://stackoverflow.com/q/27036936/645491
 [docker-ssh-forward]: https://gist.github.com/d11wtq/8699521
 [b2docker-ssh-agent]: https://gist.github.com/d11wtq/8699521#gistcomment-1424725
 [b2docker-ssh-agent-script]: https://gist.github.com/rcoup/53e8dee9f5ea27a51855
