@@ -17,7 +17,6 @@ Available Environment Variables
  - `JENKINS_PORT`: Port to access Jenkins API on.
  - `JENKINS_USER`: User to access Jenkins API with.
 
-
 Example Usage
 -------------
 
@@ -48,7 +47,25 @@ To run in debug mode & test repo checkout only inside Docker Container's `/tmp/s
 
     docker run -ti -e JENKINS_DEBUG=1 -e JENKINS_HOST=jenkins.example.net -e JENKINS_USER=myjenkinsuser -e JENKINS_PASSWORD=1deadbeefbadc0de123456789abcd -e JENKINS_JOB_FILTER='foo' trinitronx/jenkins-job-batch-git-clone
 
+
+Known Issues / TODO
+-------------------
+
+If cloning via SSH URI, or private repos git credentials can prevent an easy batch clone.  You will need to pass through your git SSH keys, or use `ssh-agent`.  In the case of GitHub, you may choose to use a [GitHub API Token][github-api-token].
+
+A good place to start is to run `ssh-agent` on either the Docker Host machine, or on the Hosting physical machine that is running [`boot2docker`][b2docker] or [`docker-machine`][docker-machine].  You will then need to pass through the `$SSH_AUTH_SOCK` environment variable, and mount the actual socket file as a volume into the Docker Container.  The method for doing this depends on where you are running the `docker` daemon (e.g.: [`boot2docker`][b2docker] on a Mac / physical machine, [`docker-machine`][docker-machine] on a Mac / physical machine, inside another Linux VM, on a physical machine, etc...)
+
+Here are some helpful methods:
+
+ - [If using `docker` daemon on physical or VM host][docker-ssh-forward]
+ - [If using `boot2docker`][b2docker-ssh-agent]
+ - [If using `docker-machine`][docker-machine-ssh-agent]
+
 [b2docker]: http://boot2docker.io/
 [docker-machine]: https://docs.docker.com/machine/
 [jenkins-api]: https://github.com/arangamani/jenkins_api_client
 [jenkins-api-token]: https://wiki.jenkins-ci.org/display/JENKINS/Authenticating+scripted+clients
+[docker-ssh-forward]: https://gist.github.com/d11wtq/8699521
+[b2docker-ssh-agent]: https://gist.github.com/d11wtq/8699521#gistcomment-1424725
+[docker-machine-ssh-agent]: https://gist.github.com/leedm777/923706741c8296869e7d
+[github-api-token]: https://github.com/blog/1509-personal-api-tokens
