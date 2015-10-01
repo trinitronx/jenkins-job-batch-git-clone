@@ -58,7 +58,7 @@ A good place to start is to run `ssh-agent` on either the Docker Host machine, o
 Here are some helpful methods:
 
  - [If using `docker` daemon on physical or VM host][docker-ssh-forward]
- - [If using `boot2docker`][b2docker-ssh-agent]
+ - [If using `boot2docker`][b2docker-ssh-agent], or [this script][b2docker-ssh-agent-script]
  - [If using `docker-machine`][docker-machine-ssh-agent]
 
 [b2docker]: http://boot2docker.io/
@@ -67,5 +67,6 @@ Here are some helpful methods:
 [jenkins-api-token]: https://wiki.jenkins-ci.org/display/JENKINS/Authenticating+scripted+clients
 [docker-ssh-forward]: https://gist.github.com/d11wtq/8699521
 [b2docker-ssh-agent]: https://gist.github.com/d11wtq/8699521#gistcomment-1424725
+[b2docker-ssh-agent-script]: https://gist.github.com/rcoup/53e8dee9f5ea27a51855
 [docker-machine-ssh-agent]: https://gist.github.com/leedm777/923706741c8296869e7d
 [github-api-token]: https://github.com/blog/1509-personal-api-tokens
